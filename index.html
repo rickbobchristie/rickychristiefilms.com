@@ -3,20 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ricky Christie Films</title>
+  <title>Ricky Christie Films — Director & Camera Operator</title>
+  <meta name="description" content="Ricky Christie — filmmaker, director, and camera operator. Selected work including narrative film, music videos, and award-winning brand films.">
+
+  <!-- Open Graph / social sharing -->
+  <meta property="og:title" content="Ricky Christie Films">
+  <meta property="og:description" content="Filmmaker, director, and camera operator. Selected work and showreel.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rickychristiefilms.com/">
+  <meta property="og:image" content="https://rickychristiefilms.com/images/ricky-camera-operator.jpg">
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    :root {
+      --bg: #0a0a0a;
+      --surface: #141414;
+      --surface-hover: #1c1c1c;
+      --text: #f0f0f0;
+      --muted: #888;
+      --gold: #e8c87a;
+      --border: #262626;
+    }
+
+    html { scroll-behavior: smooth; }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #0a0a0a;
-      color: #f0f0f0;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
+      padding: 2rem;
+    }
+
+    .headshot {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      margin-bottom: 2rem;
     }
 
     h1 {
@@ -29,39 +66,284 @@
     h1 span {
       display: block;
       font-weight: 700;
-      color: #e8c87a;
+      color: var(--gold);
     }
 
-    p {
+    .tagline {
       margin-top: 1.5rem;
       font-size: 1.1rem;
-      color: #888;
+      color: var(--muted);
       letter-spacing: 0.05em;
     }
 
     .divider {
       width: 60px;
       height: 2px;
-      background: #e8c87a;
+      background: var(--gold);
       margin: 2rem auto;
     }
 
-    .headshot {
-      width: 220px;
-      height: 220px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 2px solid #e8c87a;
-      margin-bottom: 2rem;
+    .scroll-cue {
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
     }
+    .scroll-cue:hover { color: var(--gold); }
+
+    /* ---------- Work section ---------- */
+    .work {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem 6rem;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 3rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.75rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold);
+    }
+
+    /* Thumbnail / video frame keeps a 16:9 box */
+    .thumb {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      cursor: pointer;
+      overflow: hidden;
+    }
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease, opacity 0.2s ease;
+    }
+    .card:hover .thumb img { transform: scale(1.04); }
+
+    .thumb iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .play-btn {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.25);
+      transition: background 0.2s ease;
+    }
+    .thumb:hover .play-btn { background: rgba(0,0,0,0.1); }
+
+    .play-btn svg {
+      width: 64px;
+      height: 64px;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+      transition: transform 0.2s ease;
+    }
+    .thumb:hover .play-btn svg { transform: scale(1.08); }
+
+    .card-body { padding: 1.25rem 1.4rem 1.5rem; }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.5rem;
+    }
+
+    .chip {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      border-radius: 999px;
+      padding: 0.2rem 0.7rem;
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* ---------- Featured (link-out) card ---------- */
+    .card.featured { text-decoration: none; color: inherit; }
+    .featured .thumb {
+      background: linear-gradient(135deg, #1a1505 0%, #2a2207 45%, #0a0a0a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .award {
+      text-align: center;
+      padding: 1rem;
+    }
+    .award svg { width: 56px; height: 56px; margin-bottom: 0.75rem; }
+    .award .award-text {
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+    }
+    .featured .external {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 0.6rem;
+      color: var(--gold);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .featured:hover .external { text-decoration: underline; }
+
+    /* ---------- Footer ---------- */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
-  <main>
+
+  <header class="hero">
     <img class="headshot" src="images/ricky-camera-operator.jpg" alt="Ricky Christie operating a camera on set">
     <h1>Ricky Christie <span>Films</span></h1>
     <div class="divider"></div>
-    <p>Coming soon</p>
+    <p class="tagline">Director &middot; Camera Operator</p>
+    <a class="scroll-cue" href="#work">Selected Work ↓</a>
+  </header>
+
+  <main id="work" class="work">
+    <h2 class="section-title">Selected Work</h2>
+
+    <div class="grid">
+
+      <!-- Runway – The Catwalker (Director) -->
+      <article class="card">
+        <div class="thumb" data-yt="NO0BCA8JZJs" data-title="Runway – The Catwalker">
+          <img src="https://img.youtube.com/vi/NO0BCA8JZJs/maxresdefault.jpg"
+               onerror="this.src='https://img.youtube.com/vi/NO0BCA8JZJs/hqdefault.jpg'"
+               alt="Runway – The Catwalker music video thumbnail">
+          <span class="play-btn" aria-hidden="true">
+            <svg viewBox="0 0 68 48"><path d="M66.5 7.7c-.8-2.9-2.5-5.4-5.4-6.2C55.8.1 34 0 34 0S12.2.1 6.9 1.5C4 2.3 2.3 4.8 1.5 7.7.1 13 0 24 0 24s.1 11 1.5 16.3c.8 2.9 2.5 5.4 5.4 6.2C12.2 47.9 34 48 34 48s21.8-.1 27.1-1.5c2.9-.8 4.6-3.3 5.4-6.2C67.9 35 68 24 68 24s-.1-11-1.5-16.3z" fill="#e8c87a"/><path d="M45 24 27 14v20z" fill="#0a0a0a"/></svg>
+          </span>
+        </div>
+        <div class="card-body">
+          <div class="card-meta"><span class="chip">Director</span></div>
+          <h3>Runway — The Catwalker</h3>
+          <p>Music video directed for the artist Runway.</p>
+        </div>
+      </article>
+
+      <!-- Last County (Camera Operator) -->
+      <article class="card">
+        <div class="thumb" data-yt="tKmk1UEjao4" data-title="Last County – Official Trailer">
+          <img src="https://img.youtube.com/vi/tKmk1UEjao4/maxresdefault.jpg"
+               onerror="this.src='https://img.youtube.com/vi/tKmk1UEjao4/hqdefault.jpg'"
+               alt="Last County feature film trailer thumbnail">
+          <span class="play-btn" aria-hidden="true">
+            <svg viewBox="0 0 68 48"><path d="M66.5 7.7c-.8-2.9-2.5-5.4-5.4-6.2C55.8.1 34 0 34 0S12.2.1 6.9 1.5C4 2.3 2.3 4.8 1.5 7.7.1 13 0 24 0 24s.1 11 1.5 16.3c.8 2.9 2.5 5.4 5.4 6.2C12.2 47.9 34 48 34 48s21.8-.1 27.1-1.5c2.9-.8 4.6-3.3 5.4-6.2C67.9 35 68 24 68 24s-.1-11-1.5-16.3z" fill="#e8c87a"/><path d="M45 24 27 14v20z" fill="#0a0a0a"/></svg>
+          </span>
+        </div>
+        <div class="card-body">
+          <div class="card-meta"><span class="chip">Camera Operator</span></div>
+          <h3>Last County</h3>
+          <p>Official trailer for the feature film. Camera operator.</p>
+        </div>
+      </article>
+
+      <!-- OHJA – award-winning, links out -->
+      <a class="card featured" href="https://ohja.ca/" target="_blank" rel="noopener">
+        <div class="thumb">
+          <div class="award">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#e8c87a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+            <div class="award-text">2× Gold Summit Award</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-meta"><span class="chip">Brand Film</span></div>
+          <h3>Ontario Hunter Jumper Association</h3>
+          <p>Award-winning brand film — winner of two Gold Summit Awards.</p>
+          <span class="external">Watch on ohja.ca
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+          </span>
+        </div>
+      </a>
+
+    </div>
   </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Ricky Christie Films &middot; <a href="https://ohja.ca/" target="_blank" rel="noopener">Inquiries</a></p>
+  </footer>
+
+  <script>
+    // Lazy-load YouTube players: swap the thumbnail for an iframe on click.
+    document.querySelectorAll('.thumb[data-yt]').forEach(function (thumb) {
+      thumb.addEventListener('click', function () {
+        var id = thumb.getAttribute('data-yt');
+        var title = thumb.getAttribute('data-title') || 'Video';
+        var iframe = document.createElement('iframe');
+        iframe.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+        iframe.title = title;
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        iframe.allowFullscreen = true;
+        thumb.innerHTML = '';
+        thumb.style.cursor = 'default';
+        thumb.appendChild(iframe);
+      }, { once: true });
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
 </body>
 </html>
