@@ -251,6 +251,12 @@
     }
     .about-text p { color: #cfcfcf; margin-bottom: 1rem; max-width: 38rem; }
     .about-text p.fine { color: var(--muted); font-size: 0.95rem; }
+    .about-links { margin-top: 1.6rem; display: flex; gap: 1.6rem; }
+    .about-links a {
+      font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none; transition: color 0.2s;
+    }
+    .about-links a:hover { color: var(--gold); }
 
     /* ---------- Contact ---------- */
     .contact { border-top: 1px solid var(--border); text-align: center; }
@@ -378,8 +384,14 @@
           <p>Ricky Christie is a cinematographer and director of photography whose work spans
              narrative film, commercial, and music video. His camera work earned two Gold Summit
              Awards for the Ontario Hunter Jumper Association film.</p>
+          <p>His Toronto 48 Hour Film Project entry won the city competition and went on to
+             screen at Filmapalooza in Lisbon.</p>
           <p class="fine">He also directs — including music videos produced through Hifi Sound
              Portraits — and partners with directors, agencies, and artists to shape image and light.</p>
+          <div class="about-links">
+            <a href="https://www.imdb.com/name/nm7303618/" target="_blank" rel="noopener">IMDb ↗</a>
+            <a href="https://www.instagram.com/rickyrowks/" target="_blank" rel="noopener">Instagram ↗</a>
+          </div>
         </div>
       </div>
     </section>
@@ -388,7 +400,7 @@
       <div class="wrap">
         <h2>Let's make something.</h2>
         <p>Available for features, commercials, and music videos.</p>
-        <a class="btn" href="mailto:rickbobchristie@gmail.com">Get in touch</a>
+        <a class="btn" href="mailto:info@rickychristiefilms.com">Get in touch</a>
       </div>
     </section>
   </main>
