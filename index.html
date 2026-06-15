@@ -229,6 +229,27 @@
     }
     .featured:hover .external { color: var(--gold); }
 
+    /* ---------- Full-bleed banner ---------- */
+    .banner {
+      position: relative;
+      height: clamp(320px, 58vh, 600px);
+      overflow: hidden;
+      border-top: 1px solid var(--border);
+    }
+    .banner img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center 32%;
+      display: block;
+      filter: grayscale(8%);
+    }
+    .banner::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom,
+        rgba(10,10,10,0.45), transparent 22%, transparent 68%, rgba(10,10,10,0.65));
+      pointer-events: none;
+    }
+
     /* ---------- About ---------- */
     .about { border-top: 1px solid var(--border); }
     .about-grid {
@@ -243,7 +264,6 @@
       object-fit: cover;
       border: 1px solid var(--border);
       border-radius: 4px;
-      filter: grayscale(15%);
     }
     .about-text h2 {
       font-family: var(--display);
@@ -376,9 +396,13 @@
       </div>
     </section>
 
+    <section class="banner">
+      <img src="images/ricky-camera-operator.jpg" alt="Ricky Christie operating the camera on set">
+    </section>
+
     <section class="about">
       <div class="wrap about-grid">
-        <img class="about-photo" src="images/ricky-camera-operator.jpg" alt="Ricky Christie operating a camera on set">
+        <img class="about-photo" src="images/ricky-portrait.jpg" alt="Ricky Christie">
         <div class="about-text">
           <h2>About</h2>
           <p>Ricky Christie is a cinematographer and director of photography whose work spans
